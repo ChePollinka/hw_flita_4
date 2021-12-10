@@ -55,18 +55,15 @@ void get_lines(struct line *lines, const char *filename)
 void removing_edge (int l, struct line *lines, int v1, int v2, bool* fl) //длинна масива, масив, две вершины, образующих ребро, которое надо удалить
 {
     *fl = 0;
-    int i = 0;
-    while (()i < l) && (fl == 0))
+    for (int i=0; i<l; i++)
+    if (((lines[i].node1 == v1) && (lines[i].node2 == v2)) || ((lines[i].node1 == v2) && (lines[i].node2 == v1)))
     {
-            if (((lines[i].node1 == v1) && (lines[i].node2 == v2)) || ((lines[i].node1 == v2) && (lines[i].node2 == v1)))
+        for (i; i < l-1; i++)
         {
-            for (i; i < l-1; i++)
-            {
-                lines[i].node1=lines[i+1].node1;
-                lines[i].node2=lines[i+1].node2;
-            }
-            *fl = 1;
+            lines[i].node1=lines[i+1].node1;
+            lines[i].node2=lines[i+1].node2;
         }
+        *fl = 1;
     }
 
 }
